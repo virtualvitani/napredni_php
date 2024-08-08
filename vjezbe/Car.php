@@ -4,14 +4,14 @@
 
 class Car {
 
-    private string $make;
-    private string $model;
-    private string $fuel;
-    private int $weight;
+    private string $make; // proizvodjac
+    private string $model; // model
+    private string $fuel; // gorivo
+    private int $weight; // masa
 
-    private function belongsTo()
+    public function belongsTo()
     {
-        
+       
     }
 
     public function getFullName()
@@ -77,11 +77,14 @@ class Car {
 }
 
 $tesla = new Car();
-
 $tesla
     ->setMake('Tesla')
     ->setModel('S')
     ->setWeight(2300)
     ->setFuel('Electric');
 
-echo $tesla->getFullName();
+// $vlasnik = new Vlasnik($tesla, "alex", "d", 39, 'M', null);
+
+dd($vlasnik);
+
+// echo $tesla->getFullName();
