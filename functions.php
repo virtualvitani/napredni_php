@@ -1,12 +1,5 @@
 <?php
 
-function dump($var)
-{
-    echo '<pre>';
-    var_dump($var);
-    echo '</pre>';
-}
-
 function dd($var)
 {
     echo '<pre>';
@@ -15,9 +8,9 @@ function dd($var)
     die();
 }
 
-function base_path($path): string
+function base_path($path = '/'): string
 {
-    return dirname(__DIR__) . DIRECTORY_SEPARATOR . $path;
+    return __DIR__ . DIRECTORY_SEPARATOR . $path;
 }
 
 function abort($code = 404)
@@ -29,36 +22,18 @@ function abort($code = 404)
 
 function redirect($path)
 {
-    header("location:/$path");
+    header("Location:/$path");
     exit();
 }
 
-function goBack(): void
-{
-    header("location: {$_SERVER['HTTP_REFERER']}");
-    exit();
-}
+// Autoload classes
+// spl_autoload_register(function ($class_name) {
+//    $class_name = str_replace('\\', DIRECTORY_SEPARATOR, $class_name);
 
-//TODO: move to a Helper calss next 3 functions
-function isCurrent(string $link): bool
-{
-    $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+//    $file = base_path($class_name) . '.php';
 
-    if($uri === $link){
-        return true;
-    }
-    
-    $route = explode('/', $uri)[1];
+//    if (file_exists($file)) {
+//        require_once $file;
+//    }
+// });
 
-    return $route === $link;
-}
-
-function setActiveCalss(string $link): string
-{
-    return isCurrent($link) ? 'active' : '';
-}
-
-function setAriaCurent(string $link): string
-{
-    return isCurrent($link) ? 'aria-curent="page"' : 'aria-curent="false"';
-}

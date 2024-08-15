@@ -1,35 +1,41 @@
 <?php
 
-// declare(strict_types=1);
+namespace Vjezbe;
 
-class Car {
+use \Countable;
 
-    private string $make; // proizvodjac
-    private string $model; // model
-    private string $fuel; // gorivo
-    private int $weight; // masa
+class Car extends Vehicle implements Driveable, Countable
+{
+    private string $marka;
+    private string $model;
+    protected string $gorivo;
 
-    public function belongsTo()
+    public function __construct(string $marka, string $model, string $gorivo, int $masa, string $tip, string $kategorija)
+    {
+        $this->marka = $marka;
+        $this->model = $model;
+        $this->gorivo = $gorivo;
+
+        parent::__construct($tip, $kategorija, $masa);
+    }
+
+    public function getMasa()
     {
        
     }
 
-    public function getFullName()
+    public function drives()
     {
-        return "$this->make $this->model";
+        return 'it drives';
     }
 
-    // Getter metoda - vraca vrijednost privatnog svojstva izvan klase
-    public function getMake()
-    {
-        return $this->make;
+    public function count(): int {
+        return 1;
     }
 
-    // Setter metoda - sluzi za postavljanje vrijednosti privatnog svojstva izvan klase
-    public function setMake(string $make)
+    public function getMarka()
     {
-        $this->make = $make;
-        return $this;
+        return $this->marka;
     }
 
     public function getModel(): string
@@ -37,54 +43,16 @@ class Car {
         return $this->model;
     }
 
-    public function setModel(string $var)
+    public function getGorivo(): string
     {
-        $this->model = $var;
-        return $this;
+        return $this->gorivo;
     }
 
-    public function getWeight(): int
+    public function getFullName()
     {
-        return $this->weight;
+        return "$this->marka - $this->model";
     }
 
-    public function setWeight(int $weight)
-    {
-        $this->weight = $weight;
-        return $this;
-    }
-
-    public function getFuel(): string
-    {
-        return $this->fuel;
-    }
-
-    public function setFuel(string $fuel)
-    {
-        $this->fuel = $fuel;
-        return $this;
-    }
-
-    public function toArray()
-    {
-        return [
-            'make' => $this->make,
-            'model' => $this->model,
-            'fuel' => $this->fuel,
-            'weight' => $this->weight,
-        ];
-    }
 }
 
-$tesla = new Car();
-$tesla
-    ->setMake('Tesla')
-    ->setModel('S')
-    ->setWeight(2300)
-    ->setFuel('Electric');
-
-// $vlasnik = new Vlasnik($tesla, "alex", "d", 39, 'M', null);
-
-dd($vlasnik);
-
-// echo $tesla->getFullName();
+$car = new Car('Tesla', 'Model S', 'Electric', 2300, 'Cestovno', 'B');

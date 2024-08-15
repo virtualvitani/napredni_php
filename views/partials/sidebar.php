@@ -10,16 +10,16 @@
                     <a href="/" class="nav-link text-white link-primary" aria-current="page"><i class="bi bi-house me-2"></i>Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="members.php" class="nav-link text-white link-primary active" aria-current="page"><i class="bi bi-person-circle me-2"></i>Clanovi</a>
+                    <a href="/members" class="nav-link text-white link-primary active" aria-current="page"><i class="bi bi-person-circle me-2"></i>Clanovi</a>
                 </li>
                 
                 <li class="nav-item">
-                    <a href="genres.php" class="nav-link text-white link-primary <?= $activePage === 'zanrovi' ? 'active' : '' ?>" aria-current="page">
+                    <a href="/genres" class="nav-link text-white link-primary <?= $activePage === 'zanrovi' ? 'active' : '' ?>" aria-current="page">
                         <i class="bi bi-camera-reels me-2"></i>Zanrovi</a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="movies.php" class="nav-link text-white link-primary <?= $_SERVER['REQUEST_URI'] === '/movies.php' ? 'active' : '' ?>" aria-current="page">
+                    <a href="/movies" class="nav-link text-white link-primary <?= $_SERVER['REQUEST_URI'] === '/movies.php' ? 'active' : '' ?>" aria-current="page">
                         <i class="bi bi-camera-reels me-2"></i>Filmovi</a>
                 </li>
             </ul>
