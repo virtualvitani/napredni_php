@@ -26,14 +26,15 @@ function redirect($path)
     exit();
 }
 
-// Autoload classes
-// spl_autoload_register(function ($class_name) {
-//    $class_name = str_replace('\\', DIRECTORY_SEPARATOR, $class_name);
+function isCurrent(string $link, $defaultReturn = "active"): string
+{
+    $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+    $link = "/" . $link;
 
-//    $file = base_path($class_name) . '.php';
-
-//    if (file_exists($file)) {
-//        require_once $file;
-//    }
-// });
+    if (str_starts_with($uri, $link)){
+        return $defaultReturn;
+    } else {
+        return '';
+    }
+}
 

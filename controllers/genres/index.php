@@ -1,14 +1,11 @@
 <?php
 
-$db = new Database();
+use Core\Database;
 
-dd($db);
-try {
-    $sql = "SELECT * from zanrovi";
-    $genres = $db->query($sql);
-} catch (\Exception $e) {
-    die("Connection failed: {$exception->getMessage()}");
-}
+$db = Database::get();
+
+$sql = "SELECT * from zanrovi ORDER BY id";
+$genres = $db->query($sql)->all();
 
 $pageTitle = 'Zanrovi';
 

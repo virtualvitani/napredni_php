@@ -1,30 +1,17 @@
 <?php
 
+// CRUD => C = create; R = read; U = update; D = delete
+
+use Vjezbe\ElectricCar as ElCar;
+use Alex\Vjezbe\ElectricCar;
+use Vjezbe\Car;
+use Vjezbe\Driveable;
+
 require_once '../functions.php';
-require_once base_path('Database.php');
+require_once base_path('Core/bootstrap.php');
+require_once base_path('Core/router.php');
 
-$uri = parse_url($_SERVER['REQUEST_URI'])["path"];
 
-switch ($uri) {
-    case '/':
-        require base_path('controllers/home.php');
-        break;
-    case '/members':
-        require base_path('controllers/members.php');
-        break;
-    case '/genres':
-        require base_path('controllers/genres/index.php');
-        break;
-    case '/genres/create':
-        require base_path('controllers/genres/create.php');
-        break;
-    case '/genres/store':
-        require base_path('controllers/genres/store.php');
-        break;
-    case '/movies':
-        require base_path('controllers/movies.php');
-        break;
-    
-    default:
-        abort(401);
-}
+// $ec = new ElectricCar(95, 'NMC', 'CCS', 'Tesla', 'Model S', 'electric', 2300, 'cestovno', 'B');
+// $car = new Car(95, 'NMC', 'CCS', 'Tesla', 'Model S', 'electric', 2300, 'cestovno', 'B');
+// dd($car instanceof Car);
