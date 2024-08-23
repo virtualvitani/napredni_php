@@ -6,6 +6,6 @@
     <title>Not Found</title>
 </head>
 <body>
-    <h2 style="margin: 50px auto;width: max-content;">Not found 404</h2>
+    <h2 style="margin: 50px auto;width: max-content;">Not Found 404</h2>
 </body>
 </html>
